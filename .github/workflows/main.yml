@@ -38,13 +38,16 @@ jobs:
         restore-keys: |
           ${{ runner.os }}-buildx-
 
+    - name: Copy .envexample to .env
+      run: cp .envexample .env
+
     - name: Build and start Docker Compose services
       run: docker-compose -f docker-compose.yml up --build -d
 
     - name: Wait for services to be ready
       run: |
         echo "Waiting for services to be ready..."
-        sleep 10
+        sleep 30
 
     - name: Run tests
       run: ./run_tests.sh
