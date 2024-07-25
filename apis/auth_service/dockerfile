@@ -1,0 +1,15 @@
+# auth_service/Dockerfile
+FROM python:3.10-slim
+
+WORKDIR /app
+
+COPY share/requirements.txt requirements.txt
+RUN pip install -r requirements.txt
+
+COPY .env .env
+COPY share/utilities/ utilities/
+
+COPY apis/auth_service/ .
+RUN python manage.py migrate
+
+CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]

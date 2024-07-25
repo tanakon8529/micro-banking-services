@@ -1,0 +1,60 @@
+version: '3.7'
+
+services:
+  redis:
+    image: redis:7.2-alpine
+    ports:
+      - '6379:6379'
+    volumes:
+      - redis_data:/data
+    command: redis-server --requirepass $REDIS_PASSWORD --appendonly yes
+    networks:
+      - banking-network
+
+  auth_service:
+    build:
+      context: .
+      dockerfile: apis/auth_service/Dockerfile
+    ports:
+      - '8000:8000'
+    environment:
+      - DJANGO_SETTINGS_MODULE=auth_service.settings
+    depends_on:
+      - redis
+    networks:
+      - banking-network
+
+  account_service:
+    build:
+      context: .
+      dockerfile: apis/account_service/Dockerfile
+    ports:
+      - '8001:8001'
+    environment:
+      - DJANGO_SETTINGS_MODULE=account_service.settings
+    depends_on:
+      - auth_service
+      - redis
+    networks:
+      - banking-network
+
+  transaction_service:
+    build:
+      context: .
+      dockerfile: apis/transaction_service/Dockerfile
+    ports:
+      - '8002:8002'
+    environment:
+      - DJANGO_SETTINGS_MODULE=transaction_service.settings
+    depends_on:
+      - auth_service
+      - account_service
+      - redis
+    networks:
+      - banking-network
+
+networks:
+  banking-network:
+
+volumes:
+  redis_data:

@@ -1,0 +1,115 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# C extensions
+*.so
+
+# Distribution / packaging
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+*.egg-info/
+.installed.cfg
+*.egg
+wheelhouse/
+pip-wheel-metadata/
+share/python-wheels/
+
+# Installer logs
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Virtual environments
+venv/
+ENV/
+env/
+env.bak/
+venv.bak/
+
+# Django stuff:
+*.log
+*.pot
+*.pyc
+__pycache__/
+local_settings.py
+db.sqlite3
+media
+
+# If you are using the 'sqlite' database:
+*.sqlite3
+
+# Django specific files
+*.env
+.env
+
+# Static and media files
+/static/
+media/
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# pyenv
+.python-version
+
+# mypy
+.mypy_cache/
+.dmypy.json
+dmypy.json
+
+# VS Code
+.vscode/
+
+# PyCharm
+.idea/
+
+# Docker
+*.log
+*.pid
+*.seed
+*.pid.lock
+__pycache__/
+*.pyc
+
+# Testing
+.coverage
+.tox/
+.nox/
+.cache
+.pytest_cache/
+.coverage.*
+nosetests.xml
+coverage.xml
+*.cover
+.hypothesis/
+.pytest_cache/
+
+# Windows and macOS
+*.DS_Store
+Thumbs.db
+
+# JetBrains IDEs
+.idea/
+*.iml
+out/
+*.ipr
+*.iws
+.idea/
+*.idea/
+
+# Linux
+*~
+
+# Distribution
+dist/
